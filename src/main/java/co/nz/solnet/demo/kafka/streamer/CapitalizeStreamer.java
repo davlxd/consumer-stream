@@ -23,11 +23,11 @@ public class CapitalizeStreamer {
 
         KStream<String, String> source = builder.stream(kafkaProperties.getProperty("first.topic"));
         source.mapValues(v -> v.toUpperCase())
-                .groupByKey()
-                .aggregate(
-                        () -> "",
-                        (k, v, agg) -> agg + v)
-                .toStream()
+//                .groupByKey()
+//                .aggregate(
+//                        () -> "",
+//                        (k, v, agg) -> agg + v)
+//                .toStream()
                 .foreach((k, v) -> System.out.println(k + " : " + v));
 
 
